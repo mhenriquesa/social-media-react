@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import HeaderLoggedIn from './HeaderLoggedIn';
+// import HeaderLoggedIn from './HeaderLoggedIn';
 import HeaderLoggedOut from './HeaderLoggedOut';
 
+
 export default function Header() {
+  const [loggedIn, setLoggedIn] = useState();
 
   return <>
     <header className="header-bar bg-primary mb-3">
@@ -12,7 +16,9 @@ export default function Header() {
           Social Media using ReactJS
         </Link>
       </h4>
-      <HeaderLoggedOut />
+      {loggedIn ? 
+      <HeaderLoggedIn setLoggedIn={setLoggedIn}/> 
+      : <HeaderLoggedOut setLoggedIn={setLoggedIn}/>}
     </div>
   </header>
   </>

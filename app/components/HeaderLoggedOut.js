@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Axios from 'axios';
 
-function HeaderLoggedOut() {
+function HeaderLoggedOut(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -9,7 +9,8 @@ function HeaderLoggedOut() {
     e.preventDefault()
     try {
       const response = await Axios.post('http://localhost:8080/login', {username, password})
-      response.data ? console.log(response.data) : console.log("User or pass incorrect")
+      response.data ? props.setLoggedIn(true) : console.log("User or pass incorrect")
+
     } catch (e) {
       console.log("There was a problem")
     }
