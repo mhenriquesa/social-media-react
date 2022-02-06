@@ -1,6 +1,12 @@
 import React, { useEffect } from "react"
 
 function HeaderLoggedIn(props) {
+  const handleLogout = () => {
+    props.setLoggedIn(false)
+    localStorage.removeItem("complexAppToken")
+    localStorage.removeItem("complexAppAvatar")
+    localStorage.removeItem("complexAppUsername")
+  }
   return (
     <>
       <div className="flex-row my-3 my-md-0">
@@ -17,7 +23,7 @@ function HeaderLoggedIn(props) {
         <a className="btn btn-sm btn-success mr-2" href="/create-post">
           Create Post
         </a>
-        <button onClick={() => props.setLoggedIn(false)} className="btn btn-sm btn-secondary">
+        <button onClick={handleLogout} className="btn btn-sm btn-secondary">
           Sign Out
         </button>
       </div>  

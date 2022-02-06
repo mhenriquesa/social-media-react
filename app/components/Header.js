@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import HeaderLoggedIn from './HeaderLoggedIn';
-// import HeaderLoggedIn from './HeaderLoggedIn';
 import HeaderLoggedOut from './HeaderLoggedOut';
 
 
 export default function Header() {
-  const [loggedIn, setLoggedIn] = useState();
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("complexAppToken"));
 
   return <>
     <header className="header-bar bg-primary mb-3">
